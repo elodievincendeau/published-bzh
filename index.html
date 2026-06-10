@@ -121,7 +121,7 @@ function renderPeople(){
   const ppl = people();
   if(!current && ppl.length) current = ppl[0].id;
   const c = document.getElementById('people');
-  c.innerHTML = ppl.map(p=>'<button class="'+(p.id===current?'on':'')+'" onclick="selectPerson(''+p.id+'')">'+p.name+(p.fix>0?' <span class="badge">'+p.fix+'</span>':'')+'</button>').join('');
+  c.innerHTML = ppl.map(p=>'<button class="'+(p.id===current?'on':'')+'" onclick="selectPerson(\''+p.id+'\')">'+p.name+(p.fix>0?' <span class="badge">'+p.fix+'</span>':'')+'</button>').join('');
   renderDetail();
 }
 function selectPerson(id){ current=id; renderPeople(); }
