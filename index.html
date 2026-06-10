@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Propriétés nouvellement publiées — Bretagne-Pays de la Loire & FR North</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --primary:#00809D; --dark:#024251; --accent:#54CEEA;
+    --clean:#74CFA9; --coral:#E2674E; --bg:#FAF9F8; --text:#2B2926; --gray:#938F8B;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:'Inter',Arial,sans-serif;font-weight:300;}
+  .wrap{max-width:1180px;margin:0 auto;padding:24px;}
+  header.band{background:var(--dark);color:#fff;border-radius:14px;padding:26px 30px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+  header.band h1{font-size:22px;font-weight:600;margin:0 0 6px;}
+  header.band .sub{color:var(--accent);font-size:15px;}
+  .btn-looker{background:var(--primary);color:#fff;text-decoration:none;padding:11px 18px;border-radius:9px;font-weight:600;font-size:14px;white-space:nowrap;}
+  .kpis{display:flex;gap:16px;margin:22px 0;flex-wrap:wrap;}
+  .kpi{flex:1;min-width:180px;background:#fff;border-radius:13px;padding:20px 22px;box-shadow:0 1px 3px rgba(0,0,0,.06);}
+  .kpi .n{font-size:38px;font-weight:600;line-height:1;}
+  .kpi .l{color:var(--gray);font-size:13px;margin-top:8px;text-transform:uppercase;letter-spacing:.5px;}
+  .kpi.fix .n{color:var(--coral);} .kpi.clean .n{color:var(--clean);} .kpi.pub .n{color:var(--primary);}
+  .rulebox{background:#fff;border-left:5px solid var(--accent);border-radius:10px;padding:16px 20px;margin-bottom:22px;font-size:13.5px;}
+  .rulebox b{font-weight:600;color:var(--dark);}
+  .rulebox ul{margin:8px 0 0;padding-left:20px;columns:2;}
+  .rulebox li{margin:3px 0;}
+  .toggle{display:flex;gap:10px;margin-bottom:18px;}
+  .toggle button{flex:0 0 auto;border:2px solid var(--primary);background:#fff;color:var(--primary);font-family:inherit;font-weight:600;font-size:15px;padding:11px 22px;border-radius:10px;cursor:pointer;}
+  .toggle button.on{background:var(--primary);color:#fff;}
+  .people{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;}
+  .people button{border:1px solid var(--gray);background:#fff;color:var(--text);font-family:inherit;font-weight:600;font-size:13px;padding:8px 14px;border-radius:20px;cursor:pointer;}
+  .people button.on{background:var(--dark);color:#fff;border-color:var(--dark);}
+  .people button .badge{display:inline-block;background:var(--coral);color:#fff;border-radius:10px;padding:0 7px;margin-left:6px;font-size:11px;}
+  table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 1px 3px rgba(0,0,0,.06);font-size:13px;}
+  thead th{background:var(--primary);color:#fff;font-weight:600;text-align:left;padding:10px 9px;font-size:12px;}
+  tbody td{padding:9px;border-top:1px solid #EEE;vertical-align:top;}
+  tr.fix{background:#FFF6F3;border-left:4px solid var(--coral);}
+  .chip{display:inline-block;background:var(--coral);color:#fff;border-radius:6px;padding:2px 7px;margin:2px 3px 0 0;font-size:11px;font-weight:600;}
+  .ok{color:var(--clean);font-weight:600;} .half{color:#C9A227;font-weight:600;} .absent{color:var(--coral);font-weight:600;}
+  .host{color:var(--gray);font-size:11px;}
+  .val-bad{color:var(--coral);font-weight:600;} .val-ok{color:var(--text);}
+  footer{color:var(--gray);font-size:11px;margin-top:26px;text-align:center;}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="band">
+    <div>
+      <h1>Propriétés nouvellement publiées — Area Bretagne-Pays de la Loire & FR North</h1>
+      <div class="sub">Semaine du 1 – 7 juin 2026</div>
+    </div>
+    <a class="btn-looker" href="https://holidu.eu.looker.com/" target="_blank">Ouvrir dans Looker</a>
+  </header>
+
+  <div class="kpis">
+    <div class="kpi pub"><div class="n">51</div><div class="l">Publiées</div></div>
+    <div class="kpi fix"><div class="n">18</div><div class="l">À corriger</div></div>
+    <div class="kpi clean"><div class="n">33</div><div class="l">Clean</div></div>
+  </div>
+
+  <div class="rulebox">
+    <b>Règle « à corriger » — un seul critère suffit :</b>
+    <ul>
+      <li>Sellable &lt; 0.50</li>
+      <li>Canal Airbnb ou BCOM absent</li>
+      <li>Distribution &lt; 0.70</li>
+      <li>Flexibilité &lt; 0.75</li>
+      <li>Compétitivité &lt; 0.60</li>
+      <li>iCal max &gt; 90 jours</li>
+      <li>Un score s/d/f/c manquant</li>
+    </ul>
+  </div>
+
+  <div class="toggle">
+    <button id="b-am" class="on" onclick="showView('am')">👤 Vue par AM</button>
+    <button id="b-sm" onclick="showView('sm')">🧑‍💼 Vue par SM</button>
+  </div>
+
+  <div class="people" id="people"></div>
+  <div id="detail"></div>
+
+  <footer>Périmètre : Bretagne-Pays de la Loire &amp; FR North · Source : Athena holidu_homes · © Holidu GmbH | Confidential</footer>
+</div>
+
+<script>
+const DATA = [{"id": 68976527, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "claire.bidault", "am": "pauline.lohou", "ho": "guessard.arthur@gmail.com", "pd": "2026-06-04", "d": 1, "c": 0.812, "s": 0.573, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "claire.bidault@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68332136, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "evan.gall", "am": "justine.guillomet", "ho": "lydie.bayo@sfr.fr", "pd": "2026-06-04", "d": 1, "c": 0.812, "s": 0.648, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "evan.gall@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68769330, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "evan.gall", "am": "justine.guillomet", "ho": "parkannaered@orange.fr", "pd": "2026-06-04", "d": 0.613, "c": 0.501, "s": 0.401, "abnb": 1, "bcom": 0, "f": 1, "imax": 77, "sm_email": "evan.gall@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": ["Sellable <0.50", "BCOM absent", "Distribution <0.70", "Competitivite <0.60"], "to_fix": true}, {"id": 68780319, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "evan.gall", "am": "maxime.concaret", "ho": "catherinehoupert@gmail.com", "pd": "2026-06-02", "d": 0.613, "c": 0.854, "s": 0.497, "abnb": 1, "bcom": 0, "f": 1, "imax": null, "sm_email": "evan.gall@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "Bzh", "flags": ["Sellable <0.50", "BCOM absent", "Distribution <0.70"], "to_fix": true}, {"id": 68889467, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "evan.gall", "am": "pauline.lohou", "ho": "le-pilori@orange.fr", "pd": "2026-06-05", "d": 0.613, "c": 0.605, "s": 0.767, "abnb": 1, "bcom": 0, "f": 1, "imax": null, "sm_email": "evan.gall@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": ["BCOM absent", "Distribution <0.70"], "to_fix": true}, {"id": 68889468, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "evan.gall", "am": "pauline.lohou", "ho": "le-pilori@orange.fr", "pd": "2026-06-05", "d": 0.613, "c": 0.752, "s": 0.705, "abnb": 1, "bcom": 0, "f": 1, "imax": null, "sm_email": "evan.gall@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": ["BCOM absent", "Distribution <0.70"], "to_fix": true}, {"id": 65478379, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "fanny.saintantoine", "am": "pauline.lohou", "ho": "venkai1010@gmail.com", "pd": "2026-06-02", "d": 1, "c": 0.688, "s": 0.994, "abnb": 1, "bcom": 1, "f": 1, "imax": 2, "sm_email": "fanny.saintantoine@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68890502, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "fanny.saintantoine", "am": "pauline.lohou", "ho": "hotel.lavillabolero@gmail.com", "pd": "2026-06-04", "d": 1, "c": 0.583, "s": 0.827, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "fanny.saintantoine@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": ["Competitivite <0.60"], "to_fix": true}, {"id": 68890511, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "fanny.saintantoine", "am": "pauline.lohou", "ho": "hotel.lavillabolero@gmail.com", "pd": "2026-06-04", "d": 1, "c": 0.542, "s": 0.817, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "fanny.saintantoine@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": ["Competitivite <0.60"], "to_fix": true}, {"id": 68890605, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "fanny.saintantoine", "am": "pauline.lohou", "ho": "hotel.lavillabolero@gmail.com", "pd": "2026-06-04", "d": 1, "c": 0.584, "s": 0.596, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "fanny.saintantoine@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": ["Competitivite <0.60"], "to_fix": true}, {"id": 68890851, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "fanny.saintantoine", "am": "maxime.concaret", "ho": "m-t.vigouroux@orange.fr", "pd": "2026-06-03", "d": 1, "c": 0.5, "s": 0.404, "abnb": 1, "bcom": 1, "f": 0.143, "imax": null, "sm_email": "fanny.saintantoine@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "Bzh", "flags": ["Sellable <0.50", "Flexibilite <0.75", "Competitivite <0.60"], "to_fix": true}, {"id": 68957471, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "fanny.saintantoine", "am": "justine.guillomet", "ho": "verolamy@lilo.org", "pd": "2026-06-04", "d": 1, "c": 0.835, "s": 0.335, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "fanny.saintantoine@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": ["Sellable <0.50"], "to_fix": true}, {"id": 68976668, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "fanny.saintantoine", "am": "justine.guillomet", "ho": "verolamy@lilo.org", "pd": "2026-06-04", "d": 1, "c": 0.793, "s": 0.414, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "fanny.saintantoine@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": ["Sellable <0.50"], "to_fix": true}, {"id": 67247123, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "jonathan.lebris", "am": "pauline.lohou", "ho": "francoise.nechet-vilain@orange.fr", "pd": "2026-06-04", "d": 1, "c": 0.564, "s": 0.39, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "jonathan.lebris@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": ["Sellable <0.50", "Competitivite <0.60"], "to_fix": true}, {"id": 68937397, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "jonathan.lebris", "am": "pauline.lohou", "ho": "brunetfabienne27@gmail.com", "pd": "2026-06-04", "d": 1, "c": 0.958, "s": 0.979, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "jonathan.lebris@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68946854, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "jonathan.lebris", "am": "pauline.lohou", "ho": "gitesdekeravy@gmail.com", "pd": "2026-06-02", "d": 0.613, "c": 0.812, "s": 0.886, "abnb": 1, "bcom": 0, "f": 1, "imax": null, "sm_email": "jonathan.lebris@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": ["BCOM absent", "Distribution <0.70"], "to_fix": true}, {"id": 68946883, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "jonathan.lebris", "am": "pauline.lohou", "ho": "gitesdekeravy@gmail.com", "pd": "2026-06-02", "d": 0.613, "c": 0.748, "s": 0.882, "abnb": 1, "bcom": 0, "f": 1, "imax": null, "sm_email": "jonathan.lebris@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": ["BCOM absent", "Distribution <0.70"], "to_fix": true}, {"id": 68952814, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "jonathan.lebris", "am": "pauline.lohou", "ho": "jlvm.poisson@wanadoo.fr", "pd": "2026-06-04", "d": 1, "c": 0.729, "s": 0.879, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "jonathan.lebris@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68952815, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "jonathan.lebris", "am": "pauline.lohou", "ho": "jlvm.poisson@wanadoo.fr", "pd": "2026-06-04", "d": 1, "c": 0.729, "s": 0.879, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "jonathan.lebris@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68952816, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "jonathan.lebris", "am": "pauline.lohou", "ho": "jlvm.poisson@wanadoo.fr", "pd": "2026-06-04", "d": 1, "c": 0.729, "s": 0.789, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "jonathan.lebris@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 63817130, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "ludovic.ollivier", "am": "pauline.lohou", "ho": "j-p.lecomte@orange.fr", "pd": "2026-06-03", "d": 1, "c": 0.793, "s": 0.712, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "ludovic.ollivier@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 67628328, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "ludovic.ollivier", "am": "maxime.concaret", "ho": "contact@laconciergeriebigoudene.fr", "pd": "2026-06-04", "d": 1, "c": 0.917, "s": 0.806, "abnb": 1, "bcom": 1, "f": 0.94, "imax": null, "sm_email": "ludovic.ollivier@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68295806, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "ludovic.ollivier", "am": "maxime.concaret", "ho": "corineblondeau2944@outlook.com", "pd": "2026-06-02", "d": 1, "c": 0.793, "s": 0.889, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "ludovic.ollivier@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68769142, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "ludovic.ollivier", "am": "maxime.concaret", "ho": "contact@laconciergeriebigoudene.fr", "pd": "2026-06-04", "d": 1, "c": 0.917, "s": 0.806, "abnb": 1, "bcom": 1, "f": 0.94, "imax": null, "sm_email": "ludovic.ollivier@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68846992, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "ludovic.ollivier", "am": "justine.guillomet", "ho": "prioul.helene@gmail.com", "pd": "2026-06-05", "d": 1, "c": 0.835, "s": 0.846, "abnb": 1, "bcom": 1, "f": 0.89, "imax": null, "sm_email": "ludovic.ollivier@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68932710, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "ludovic.ollivier", "am": "maxime.concaret", "ho": "busson.nathalie@orange.fr", "pd": "2026-06-04", "d": 0.613, "c": 0.804, "s": 0.585, "abnb": 0, "bcom": 1, "f": 0.768, "imax": 77, "sm_email": "ludovic.ollivier@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "Bzh", "flags": ["Airbnb absent", "Distribution <0.70"], "to_fix": true}, {"id": 68958944, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "ludovic.ollivier", "am": "justine.guillomet", "ho": "henriheinrich@live.fr", "pd": "2026-06-03", "d": 1, "c": 0.793, "s": 0.909, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "ludovic.ollivier@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68676098, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "solene.geoffroy", "am": "justine.guillomet", "ho": "claudine.ravard@sfr.fr", "pd": "2026-06-03", "d": 1, "c": 0.876, "s": 0.393, "abnb": 1, "bcom": 1, "f": 0.286, "imax": null, "sm_email": "solene.geoffroy@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": ["Sellable <0.50", "Flexibilite <0.75"], "to_fix": true}, {"id": 68977489, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "solene.geoffroy", "am": "justine.guillomet", "ho": "alain.szezepanek65@gmail.com", "pd": "2026-06-04", "d": 1, "c": 0.812, "s": 0.741, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "solene.geoffroy@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68481542, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "valentin.magaud", "am": "justine.guillomet", "ho": "gitelaplanque@gmail.com", "pd": "2026-06-03", "d": 1, "c": 0.793, "s": 0.706, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "valentin.magaud@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68848989, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "valentin.magaud", "am": "pauline.lohou", "ho": "paulette50mi@gmail.com", "pd": "2026-06-02", "d": 1, "c": 0.917, "s": 0.979, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "valentin.magaud@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 68852806, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "valentin.magaud", "am": "justine.guillomet", "ho": "tony.hodder@gmail.com", "pd": "2026-06-05", "d": 1, "c": 0.917, "s": 0.378, "abnb": 1, "bcom": 1, "f": 0.944, "imax": null, "sm_email": "valentin.magaud@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": ["Sellable <0.50"], "to_fix": true}, {"id": 68892564, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "valentin.magaud", "am": "justine.guillomet", "ho": "maison.bretignolles.krai@gmail.com", "pd": "2026-06-05", "d": 1, "c": 0.793, "s": 0.423, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "valentin.magaud@holidu.com", "am_email": "justine.guillomet@holidu.com", "zone": "Bzh", "flags": ["Sellable <0.50"], "to_fix": true}, {"id": 68936834, "fa": "Focus Area FR Bretagne-Pays de la Loire", "sm": "valentin.magaud", "am": "pauline.lohou", "ho": "lydiedacosta@gmail.com", "pd": "2026-06-04", "d": 1, "c": 0.917, "s": 0.699, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "valentin.magaud@holidu.com", "am_email": "pauline.lohou@holidu.com", "zone": "Bzh", "flags": [], "to_fix": false}, {"id": 65801228, "fa": "Focus Area FR North", "sm": "cassandre.langlais", "am": "maxime.concaret", "ho": "sandrinetoulouse5@gmail.com", "pd": "2026-06-03", "d": 1, "c": 0.833, "s": 0.688, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "cassandre.langlais@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68450771, "fa": "Focus Area FR North", "sm": "cassandre.langlais", "am": "maxime.concaret", "ho": "anne.lepincon@gmail.com", "pd": "2026-06-01", "d": 1, "c": 0.606, "s": 0.584, "abnb": 1, "bcom": 1, "f": 0.919, "imax": 14, "sm_email": "cassandre.langlais@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68450773, "fa": "Focus Area FR North", "sm": "cassandre.langlais", "am": "maxime.concaret", "ho": "anne.lepincon@gmail.com", "pd": "2026-06-01", "d": 1, "c": 0.606, "s": 0.513, "abnb": 1, "bcom": 1, "f": 0.873, "imax": 14, "sm_email": "cassandre.langlais@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68450775, "fa": "Focus Area FR North", "sm": "cassandre.langlais", "am": "maxime.concaret", "ho": "anne.lepincon@gmail.com", "pd": "2026-06-01", "d": 1, "c": 0.606, "s": 0.526, "abnb": 1, "bcom": 1, "f": 0.94, "imax": 21, "sm_email": "cassandre.langlais@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68912597, "fa": "Focus Area FR North", "sm": "cassandre.langlais", "am": "maxime.concaret", "ho": "lartdelaconciergerie@gmx.com", "pd": "2026-06-04", "d": 1, "c": 0.958, "s": 0.421, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "cassandre.langlais@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": ["Sellable <0.50"], "to_fix": true}, {"id": 68915647, "fa": "Focus Area FR North", "sm": "cassandre.langlais", "am": "maxime.concaret", "ho": "cluzel.aurelie@hotmail.fr", "pd": "2026-06-01", "d": 1, "c": 0.876, "s": 0.889, "abnb": 1, "bcom": 1, "f": 0.945, "imax": null, "sm_email": "cassandre.langlais@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68936849, "fa": "Focus Area FR North", "sm": "cassandre.langlais", "am": "maxime.concaret", "ho": "a.ricordeau@orange.fr", "pd": "2026-06-01", "d": 1, "c": 0.917, "s": 0.88, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "cassandre.langlais@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68949250, "fa": "Focus Area FR North", "sm": "cassandre.langlais", "am": "maxime.concaret", "ho": "clairejeremy@orange.fr", "pd": "2026-06-03", "d": 0.806, "c": 0.727, "s": 0.559, "abnb": 0.5, "bcom": 1, "f": 1, "imax": null, "sm_email": "cassandre.langlais@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68646769, "fa": "Focus Area FR North", "sm": "claire.bidault", "am": "maxime.concaret", "ho": "grauxfabienne@outlook.fr", "pd": "2026-06-02", "d": 1, "c": 0.771, "s": 0.923, "abnb": 1, "bcom": 1, "f": 0.93, "imax": null, "sm_email": "claire.bidault@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68732135, "fa": "Focus Area FR North", "sm": "claire.bidault", "am": "maxime.concaret", "ho": "alice-sagot@orange.fr", "pd": "2026-06-02", "d": 0.806, "c": 0.772, "s": 0.725, "abnb": 0.5, "bcom": 1, "f": 1, "imax": 10, "sm_email": "claire.bidault@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68820233, "fa": "Focus Area FR North", "sm": "claire.bidault", "am": "maxime.concaret", "ho": "lg.gestion@outlook.fr", "pd": "2026-06-02", "d": 1, "c": 1, "s": 0.937, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "claire.bidault@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68908475, "fa": "Focus Area FR North", "sm": "claire.bidault", "am": "maxime.concaret", "ho": "stephane.hautecoeur@orange.fr", "pd": "2026-06-02", "d": 1, "c": 0.73, "s": 0.892, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "claire.bidault@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68909084, "fa": "Focus Area FR North", "sm": "claire.bidault", "am": "maxime.concaret", "ho": "kdamechantal@aol.com", "pd": "2026-06-01", "d": 1, "c": 0.771, "s": 0.933, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "claire.bidault@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68909085, "fa": "Focus Area FR North", "sm": "claire.bidault", "am": "maxime.concaret", "ho": "kdamechantal@aol.com", "pd": "2026-06-01", "d": 1, "c": 0.771, "s": 0.976, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "claire.bidault@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68909086, "fa": "Focus Area FR North", "sm": "claire.bidault", "am": "maxime.concaret", "ho": "kdamechantal@aol.com", "pd": "2026-06-01", "d": 1, "c": 0.771, "s": 0.951, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "claire.bidault@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68937084, "fa": "Focus Area FR North", "sm": "claire.bidault", "am": "maxime.concaret", "ho": "carmi-62@hotmail.fr", "pd": "2026-06-01", "d": 1, "c": 0.833, "s": 0.968, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "claire.bidault@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}, {"id": 68937097, "fa": "Focus Area FR North", "sm": "claire.bidault", "am": "maxime.concaret", "ho": "carmi-62@hotmail.fr", "pd": "2026-06-01", "d": 1, "c": 0.833, "s": 0.972, "abnb": 1, "bcom": 1, "f": 1, "imax": null, "sm_email": "claire.bidault@holidu.com", "am_email": "maxime.concaret@holidu.com", "zone": "North", "flags": [], "to_fix": false}];
+let view = 'am';
+let current = null;
+
+function firstName(local){ return local.split('.')[0].charAt(0).toUpperCase()+local.split('.')[0].slice(1); }
+function fullName(local){ return local.replace(/-/g,' ').split('.').map(p=>p.charAt(0).toUpperCase()+p.slice(1)).join(' '); }
+
+function people(){
+  const key = view;
+  const m = {};
+  DATA.forEach(r=>{ const p=r[key]; if(!m[p]) m[p]={pub:0,fix:0}; m[p].pub++; if(r.to_fix) m[p].fix++; });
+  return Object.keys(m).map(k=>({id:k,name:firstName(k),pub:m[k].pub,fix:m[k].fix}))
+              .sort((a,b)=> b.fix-a.fix || b.pub-a.pub);
+}
+
+function canalCell(v){
+  if(v===1) return '<span class="ok">✓</span>';
+  if(v===0.5) return '<span class="half">½</span>';
+  return '<span class="absent">absent</span>';
+}
+function scoreCell(v, bad){
+  if(v===null||v===undefined) return '<span class="val-bad">—</span>';
+  const cls = bad ? 'val-bad':'val-ok';
+  return '<span class="'+cls+'">'+Number(v).toFixed(2)+'</span>';
+}
+
+function showView(v){
+  view=v; current=null;
+  document.getElementById('b-am').className = v==='am'?'on':'';
+  document.getElementById('b-sm').className = v==='sm'?'on':'';
+  renderPeople();
+}
+function renderPeople(){
+  const ppl = people();
+  if(!current && ppl.length) current = ppl[0].id;
+  const c = document.getElementById('people');
+  c.innerHTML = ppl.map(p=>'<button class="'+(p.id===current?'on':'')+'" onclick="selectPerson(''+p.id+'')">'+p.name+(p.fix>0?' <span class="badge">'+p.fix+'</span>':'')+'</button>').join('');
+  renderDetail();
+}
+function selectPerson(id){ current=id; renderPeople(); }
+
+function renderDetail(){
+  const otherKey = view==='am'?'sm':'am';
+  const otherLabel = view==='am'?'Sales Manager':'Account Manager';
+  const list = DATA.filter(r=>r[view]===current);
+  let h = '<table><thead><tr>'+
+    '<th>Propriété</th><th>Zone</th><th>'+otherLabel+'</th><th>Pub</th>'+
+    '<th>Sellable</th><th>Airbnb</th><th>BCOM</th><th>Distrib</th><th>Flex</th><th>Compét</th><th>iCal</th><th>À corriger</th>'+
+    '</tr></thead><tbody>';
+  list.forEach(r=>{
+    const chips = r.flags.map(f=>'<span class="chip">'+f+'</span>').join('');
+    h += '<tr class="'+(r.to_fix?'fix':'')+'">'+
+      '<td>#'+r.id+'<br><span class="host">'+r.ho+'</span></td>'+
+      '<td>'+r.zone+'</td>'+
+      '<td>'+fullName(r[otherKey])+'</td>'+
+      '<td>'+r.pd.slice(8)+'/'+r.pd.slice(5,7)+'</td>'+
+      '<td>'+scoreCell(r.s, r.s!==null && r.s<0.50)+'</td>'+
+      '<td>'+canalCell(r.abnb)+'</td>'+
+      '<td>'+canalCell(r.bcom)+'</td>'+
+      '<td>'+scoreCell(r.d, r.d!==null && r.d<0.70)+'</td>'+
+      '<td>'+scoreCell(r.f, r.f!==null && r.f<0.75)+'</td>'+
+      '<td>'+scoreCell(r.c, r.c!==null && r.c<0.60)+'</td>'+
+      '<td>'+(r.imax===null?'—':(r.imax>90?'<span class="val-bad">'+r.imax+'</span>':r.imax))+'</td>'+
+      '<td>'+(chips||'<span class="ok">— clean</span>')+'</td>'+
+    '</tr>';
+  });
+  h += '</tbody></table>';
+  document.getElementById('detail').innerHTML = h;
+}
+showView('am');
+</script>
+</body>
+</html>
